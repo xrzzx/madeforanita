@@ -1,25 +1,38 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Special for May Dewi Selfiany 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Arial', sans-serif; display: flex; justify-content: center; align-items: center; }
-        .container { text-align: center; color: white; padding: 20px; z-index: 10; }
-        #text { font-size: 1.8rem; font-weight: bold; color: #ff69b4; text-shadow: 0 0 10px rgba(255,105,180,0.5); min-height: 3rem; }
-        .btn { padding: 15px 30px; font-size: 1rem; background: #ff69b4; border: none; border-radius: 50px; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(255,105,180,0.4); }
-        #gift-img { max-width: 80%; border-radius: 15px; display: none; margin-top: 20px; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
-        .heart { position: absolute; color: #ff69b4; animation: float 3s linear infinite; }
-        @keyframes float { 0% { transform: translateY(100vh) scale(0); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Poppins', sans-serif; }
+        canvas { position: absolute; top: 0; left: 0; z-index: 1; opacity: 0.6; }
+        .overlay { position: relative; z-index: 10; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: radial-gradient(circle, rgba(255,20,147,0.1) 0%, rgba(0,0,0,0.8) 100%); }
+        .card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.2); padding: 30px; border-radius: 25px; text-align: center; max-width: 85%; box-shadow: 0 0 30px rgba(255,20,147,0.3); animation: fadeIn 2s ease; }
+        .photo-frame { width: 150px; height: 150px; margin: 0 auto 20px; border-radius: 50%; border: 4px solid #ff69b4; overflow: hidden; display: none; box-shadow: 0 0 20px #ff69b4; }
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ff69b4; margin: 10px 0; text-shadow: 0 0 10px #ff1493; }
+        p { color: #fff; font-size: 1rem; line-height: 1.5; min-height: 60px; }
+        .btn-start { padding: 15px 35px; font-size: 1.1rem; background: #ff1493; border: none; border-radius: 50px; color: #fff; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px #ff1493; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .heart { position: absolute; color: #ff1493; pointer-events: none; animation: fly 4s linear infinite; }
+        @keyframes fly { 0% { transform: translateY(100vh) scale(0); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
     </style>
 </head>
 <body>
-    <div class="container">
-        <button class="btn" id="startBtn">KLIK UNTUK KEJUTAN ❤️</button>
-        <div id="text"></div>
-        <img id="gift-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiMKdJ/giphy.gif">
+    <canvas id="matrix"></canvas>
+    <div class="overlay">
+        <div class="card" id="card">
+            <button class="btn-start" id="startBtn">KLIK UNTUK KEJUTAN ❤️</button>
+            <div id="mainContent" style="display:none;">
+                <div class="photo-frame" id="photoFrame">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=500" alt="May Dewi">
+                </div>
+                <h1 id="title">Halo, Sayang...</h1>
+                <p id="message"></p>
+            </div>
+        </div>
     </div>
 
     <audio id="music" loop>
@@ -27,54 +40,67 @@
     </audio>
 
     <script>
-        const texts = [
-            "Halo, May Dewi Selfiany...",
-            "Ada sesuatu yang ingin aku sampaikan...",
-            "Terima kasih sudah hadir di hidupku ❤️",
-            "Kamu adalah bagian terindah dalam hariku.",
-            "Aku ingin terus bersamamu selamanya.",
-            "I LOVE YOU SO MUCH! 💖"
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const letters = "MAYDEWISELFANYLOVE❤️";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#ff1493";
+            ctx.font = fontSize + "px arial";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+
+        const content = [
+            "May Dewi Selfiany...",
+            "Aku ingin bilang sesuatu...",
+            "Terima kasih sudah menjadi pelangi di hidupku ❤️",
+            "Tetaplah bersamaku sekarang dan selamanya.",
+            "I Love You So Much! 💖"
         ];
-        
-        let i = 0;
-        const btn = document.getElementById('startBtn');
-        const textDiv = document.getElementById('text');
-        const img = document.getElementById('gift-img');
+
+        let step = 0;
+        const startBtn = document.getElementById('startBtn');
+        const mainContent = document.getElementById('mainContent');
+        const msg = document.getElementById('message');
         const music = document.getElementById('music');
 
-        btn.addEventListener('click', () => {
-            btn.style.display = 'none';
+        startBtn.addEventListener('click', () => {
+            startBtn.style.display = 'none';
+            mainContent.style.display = 'block';
             music.play();
-            createHearts();
-            showNextText();
+            showText();
+            setInterval(createHeart, 300);
         });
 
-        function showNextText() {
-            if (i < texts.length) {
-                textDiv.innerHTML = texts[i];
-                i++;
-                setTimeout(() => {
-                    if (i === texts.length) {
-                        textDiv.style.marginBottom = "20px";
-                        img.style.display = "inline-block";
-                    } else {
-                        textDiv.innerHTML = "";
-                        setTimeout(showNextText, 500);
-                    }
-                }, 2500);
+        function showText() {
+            if (step < content.length) {
+                msg.innerText = content[step];
+                step++;
+                if(step === 3) document.getElementById('photoFrame').style.display = 'block';
+                setTimeout(showText, 3500);
             }
         }
 
-        function createHearts() {
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.innerHTML = '❤️';
-                heart.className = 'heart';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
-                document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 4000);
-            }, 300);
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
         }
     </script>
 </body>
