@@ -1,107 +1,529 @@
 <!DOCTYPE html>
+
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special for May Dewi Selfiany 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-    <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Poppins', sans-serif; }
-        canvas { position: absolute; top: 0; left: 0; z-index: 1; opacity: 0.6; }
-        .overlay { position: relative; z-index: 10; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: radial-gradient(circle, rgba(255,20,147,0.1) 0%, rgba(0,0,0,0.8) 100%); }
-        .card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.2); padding: 30px; border-radius: 25px; text-align: center; max-width: 85%; box-shadow: 0 0 30px rgba(255,20,147,0.3); animation: fadeIn 2s ease; }
-        .photo-frame { width: 150px; height: 150px; margin: 0 auto 20px; border-radius: 50%; border: 4px solid #ff69b4; overflow: hidden; display: none; box-shadow: 0 0 20px #ff69b4; }
-        .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-        h1 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ff69b4; margin: 10px 0; text-shadow: 0 0 10px #ff1493; }
-        p { color: #fff; font-size: 1rem; line-height: 1.5; min-height: 60px; }
-        .btn-start { padding: 15px 35px; font-size: 1.1rem; background: #ff1493; border: none; border-radius: 50px; color: #fff; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px #ff1493; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .heart { position: absolute; color: #ff1493; pointer-events: none; animation: fly 4s linear infinite; }
-        @keyframes fly { 0% { transform: translateY(100vh) scale(0); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
-    </style>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Happy Birthday My Love</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+
+      margin:0;
+
+      padding:0;
+
+      box-sizing:border-box;
+
+    }
+
+    body{
+
+      font-family:'Poppins',sans-serif;
+
+      overflow-x:hidden;
+
+      background:linear-gradient(180deg,#ffd6e7,#fff5fa,#ffffff);
+
+      color:#ff4f88;
+
+    }
+
+    .flowers{
+
+      position:fixed;
+
+      width:100%;
+
+      height:100%;
+
+      overflow:hidden;
+
+      z-index:-1;
+
+    }
+
+    .flower{
+
+      position:absolute;
+
+      font-size:30px;
+
+      animation:fall linear infinite;
+
+      opacity:0.8;
+
+    }
+
+    @keyframes fall{
+
+      0%{
+
+        transform:translateY(-100px) rotate(0deg);
+
+      }
+
+      100%{
+
+        transform:translateY(110vh) rotate(360deg);
+
+      }
+
+    }
+
+    header{
+
+      min-height:100vh;
+
+      display:flex;
+
+      justify-content:center;
+
+      align-items:center;
+
+      text-align:center;
+
+      padding:20px;
+
+    }
+
+    .hero{
+
+      background:rgba(255,255,255,0.7);
+
+      backdrop-filter:blur(10px);
+
+      padding:40px;
+
+      border-radius:30px;
+
+      box-shadow:0 10px 40px rgba(255,105,180,0.2);
+
+      max-width:800px;
+
+      animation:fadeIn 2s ease;
+
+    }
+
+    .hero h1{
+
+      font-family:'Great Vibes',cursive;
+
+      font-size:70px;
+
+      color:#ff4f88;
+
+      margin-bottom:10px;
+
+    }
+
+    .hero h2{
+
+      font-size:28px;
+
+      margin-bottom:20px;
+
+      color:#ff73a8;
+
+    }
+
+    .hero p{
+
+      font-size:18px;
+
+      line-height:1.9;
+
+      color:#d94d82;
+
+      margin-bottom:15px;
+
+    }
+
+    .love{
+
+      font-size:40px;
+
+      margin-top:20px;
+
+      animation:pulse 2s infinite;
+
+    }
+
+    @keyframes pulse{
+
+      0%,100%{
+
+        transform:scale(1);
+
+      }
+
+      50%{
+
+        transform:scale(1.2);
+
+      }
+
+    }
+
+    @keyframes fadeIn{
+
+      from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+      }
+
+      to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+      }
+
+    }
+
+    section{
+
+      padding:80px 20px;
+
+      text-align:center;
+
+    }
+
+    .gallery{
+
+      display:grid;
+
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+      gap:20px;
+
+      max-width:1000px;
+
+      margin:auto;
+
+    }
+
+    .card{
+
+      background:white;
+
+      border-radius:25px;
+
+      overflow:hidden;
+
+      box-shadow:0 10px 25px rgba(255,105,180,0.15);
+
+      transition:0.4s;
+
+    }
+
+    .card:hover{
+
+      transform:translateY(-10px);
+
+    }
+
+    .card img{
+
+      width:100%;
+
+      height:250px;
+
+      object-fit:cover;
+
+    }
+
+    .card p{
+
+      padding:15px;
+
+      color:#ff5f95;
+
+      font-weight:500;
+
+    }
+
+    .message-box{
+
+      max-width:850px;
+
+      margin:auto;
+
+      background:white;
+
+      padding:40px;
+
+      border-radius:30px;
+
+      box-shadow:0 10px 30px rgba(255,105,180,0.15);
+
+    }
+
+    .message-box h2{
+
+      margin-bottom:20px;
+
+      font-size:40px;
+
+      color:#ff4f88;
+
+      font-family:'Great Vibes',cursive;
+
+    }
+
+    .message-box p{
+
+      font-size:18px;
+
+      line-height:2;
+
+      color:#d94d82;
+
+    }
+
+    footer{
+
+      padding:40px 20px;
+
+      text-align:center;
+
+      color:#ff77aa;
+
+      font-size:16px;
+
+    }
+
+    .btn{
+
+      display:inline-block;
+
+      margin-top:25px;
+
+      padding:14px 35px;
+
+      border-radius:50px;
+
+      background:#ff5f95;
+
+      color:white;
+
+      text-decoration:none;
+
+      font-weight:600;
+
+      transition:0.3s;
+
+    }
+
+    .btn:hover{
+
+      background:#ff3478;
+
+      transform:scale(1.05);
+
+    }
+
+  </style>
+
 </head>
+
 <body>
-    <canvas id="matrix"></canvas>
-    <div class="overlay">
-        <div class="card" id="card">
-            <button class="btn-start" id="startBtn">KLIK UNTUK KEJUTAN ❤️</button>
-            <div id="mainContent" style="display:none;">
-                <div class="photo-frame" id="photoFrame">
-                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=500" alt="May Dewi">
-                </div>
-                <h1 id="title">Halo, Sayang...</h1>
-                <p id="message"></p>
-            </div>
-        </div>
+
+  <!-- bunga jatuh -->
+
+  <div class="flowers">
+
+    <div class="flower" style="left:5%; animation-duration:8s;">🌸</div>
+
+    <div class="flower" style="left:15%; animation-duration:12s;">🌷</div>
+
+    <div class="flower" style="left:25%; animation-duration:9s;">🌹</div>
+
+    <div class="flower" style="left:35%; animation-duration:14s;">💮</div>
+
+    <div class="flower" style="left:50%; animation-duration:10s;">🌸</div>
+
+    <div class="flower" style="left:60%; animation-duration:13s;">🌷</div>
+
+    <div class="flower" style="left:75%; animation-duration:11s;">🌹</div>
+
+    <div class="flower" style="left:90%; animation-duration:9s;">💖</div>
+
+  </div>
+
+  <!-- hero -->
+
+  <header>
+
+    <div class="hero">
+
+      <h1>Happy Birthday</h1>
+
+      <h2>Untuk Wanita Terindah di Hidupku 💖</h2>
+
+      <p>
+
+        Hari ini dunia menjadi lebih indah,
+
+        karena seseorang yang sangat spesial pernah dilahirkan.
+
+      </p>
+
+      <p>
+
+        Terima kasih karena selalu hadir membawa
+
+        kebahagiaan, ketenangan, dan cinta yang tulus.
+
+        Semoga semua impianmu satu per satu terwujud,
+
+        dan semoga aku tetap menjadi bagian dari cerita bahagiamu.
+
+      </p>
+
+      <p>
+
+        Aku mungkin tidak sempurna,
+
+        tapi aku akan selalu berusaha menjadi seseorang
+
+        yang bisa membuatmu tersenyum setiap hari.
+
+      </p>
+
+      <div class="love">💗</div>
+
+      <a href="#message" class="btn">Buka Pesan Spesial</a>
+
     </div>
 
-    <audio id="music" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-    </audio>
+  </header>
 
-    <script>
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        const letters = "MAYDEWISELFANYLOVE❤️";
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
+  <!-- gallery -->
 
-        function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#ff1493";
-            ctx.font = fontSize + "px arial";
-            for (let i = 0; i < drops.length; i++) {
-                const text = letters.charAt(Math.floor(Math.random() * letters.length));
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(drawMatrix, 50);
+  <section>
 
-        const content = [
-            "May Dewi Selfiany...",
-            "Aku ingin bilang sesuatu...",
-            "Terima kasih sudah menjadi pelangi di hidupku ❤️",
-            "Tetaplah bersamaku sekarang dan selamanya.",
-            "I Love You So Much! 💖"
-        ];
+    <h2 style="font-size:50px; font-family:'Great Vibes',cursive; margin-bottom:40px;">
 
-        let step = 0;
-        const startBtn = document.getElementById('startBtn');
-        const mainContent = document.getElementById('mainContent');
-        const msg = document.getElementById('message');
-        const music = document.getElementById('music');
+      Beautiful Memories ✨
 
-        startBtn.addEventListener('click', () => {
-            startBtn.style.display = 'none';
-            mainContent.style.display = 'block';
-            music.play();
-            showText();
-            setInterval(createHeart, 300);
-        });
+    </h2>
 
-        function showText() {
-            if (step < content.length) {
-                msg.innerText = content[step];
-                step++;
-                if(step === 3) document.getElementById('photoFrame').style.display = 'block';
-                setTimeout(showText, 3500);
-            }
-        }
+    <div class="gallery">
 
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.className = 'heart';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 4000);
-        }
-    </script>
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <p>Setiap senyummu selalu jadi alasan bahagiaku 🌸</p>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <p>Terima kasih sudah hadir di hidupku 💕</p>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        <p>Aku ingin terus membuat kenangan indah bersamamu 🌷</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- pesan -->
+
+  <section id="message">
+
+    <div class="message-box">
+
+      <h2>Pesan Untuk Kamu 💌</h2>
+
+      <p>
+
+        Selamat ulang tahun sayangku.
+
+        Semoga di umur yang baru ini,
+
+        kamu selalu dikelilingi kebahagiaan,
+
+        kesehatan, dan cinta yang tidak pernah habis.
+
+      </p>
+
+      <br>
+
+      <p>
+
+        Jangan pernah ragu dengan dirimu sendiri,
+
+        karena kamu adalah seseorang yang sangat berharga.
+
+        Kamu pantas mendapatkan hal-hal terbaik dalam hidup.
+
+      </p>
+
+      <br>
+
+      <p>
+
+        Aku bersyukur bisa mengenalmu,
+
+        mendengarkan ceritamu,
+
+        dan menjadi bagian kecil dari hidupmu.
+
+      </p>
+
+      <br>
+
+      <p>
+
+        Semoga langkah kita selalu dipenuhi tawa,
+
+        dipenuhi cinta,
+
+        dan dipenuhi banyak cerita indah lainnya.
+
+      </p>
+
+      <br>
+
+      <p style="font-size:22px; font-weight:600;">
+
+        I love you, always. 💖
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    Dibuat dengan cinta 🤍🌸
+
+  </footer>
+
 </body>
+
 </html>
