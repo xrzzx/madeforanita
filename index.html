@@ -72,6 +72,12 @@ background:#ff4f88;
 color:white;
 font-size:18px;
 cursor:pointer;
+transition:0.3s;
+}
+
+.open-btn:hover{
+transform:scale(1.05);
+background:#ff2f74;
 }
 
 /* FLOWERS */
@@ -140,7 +146,7 @@ font-size:18px;
 color:#d94d82;
 }
 
-/* LOVE PHOTO */
+/* HEART PHOTO */
 .heart-wrap{
 display:flex;
 justify-content:center;
@@ -314,7 +320,6 @@ font-size:18px;
 cursor:pointer;
 }
 
-/* FOOTER */
 footer{
 text-align:center;
 padding:40px;
@@ -322,6 +327,13 @@ color:#ff75a8;
 font-size:16px;
 }
 
+img{
+image-rendering:auto;
+backface-visibility:hidden;
+transform:translateZ(0);
+}
+
+/* MOBILE */
 @media(max-width:768px){
 
 .title{
@@ -365,9 +377,11 @@ Open Surprise 💌
 </div>
 
 <!-- MUSIC -->
-<audio id="music" autoplay loop>
-<source src="https://files.catbox.moe/8xq1zn.mp3" type="audio/mpeg">
-</audio>
+<iframe 
+src="https://www.youtube.com/embed/fLexgOxsZu0?autoplay=1&loop=1&playlist=fLexgOxsZu0"
+allow="autoplay"
+style="display:none">
+</iframe>
 
 <!-- FLOWERS -->
 <div class="bg">
@@ -413,7 +427,7 @@ Aku akan selalu mencintaimu 💕
 
 <div class="heart">
 
-<img src="https://i.postimg.cc/7bsLwTbW/41228b7e-4b11-4f68-a87c-52c7db1f5160.jpg">
+<img src="https://i.ibb.co/9mCgZFZn/foto1.jpg">
 
 </div>
 
@@ -435,35 +449,35 @@ Our Beautiful Memories 🌸
 <div class="slides">
 
 <div class="slide">
-<img src="https://i.postimg.cc/7bsLwTbW/41228b7e-4b11-4f68-a87c-52c7db1f5160.jpg">
+<img src="https://i.ibb.co/9mCgZFZn/foto1.jpg">
 <div class="caption">
 Setiap senyummu selalu menjadi alasanku untuk bahagia 💖
 </div>
 </div>
 
 <div class="slide">
-<img src="https://i.postimg.cc/VdyrtCBR/dc4c0e80-9854-46e0-b754-dce2a7a40203.jpg">
+<img src="https://i.ibb.co/tRk3SvV/foto2.jpg">
 <div class="caption">
 Kamu adalah rumah ternyaman yang pernah aku temukan ✨
 </div>
 </div>
 
 <div class="slide">
-<img src="https://i.postimg.cc/Wd8hxfRx/f4fac2b3-3aa8-4ee1-bb44-b2662dbd07f9.jpg">
+<img src="https://i.ibb.co/1YxhjZNT/foto3.jpg">
 <div class="caption">
 Aku ingin terus menciptakan cerita indah bersamamu 🌸
 </div>
 </div>
 
 <div class="slide">
-<img src="https://i.postimg.cc/sQkX5kSB/IMG-8906.jpg">
+<img src="https://i.ibb.co/CZgGJ1z/foto4.jpg">
 <div class="caption">
 Terima kasih sudah selalu ada di setiap bahagiaku 💕
 </div>
 </div>
 
 <div class="slide">
-<img src="https://i.postimg.cc/Lq0h8Y8c/IMG-9257.jpg">
+<img src="https://i.ibb.co/LXtP3hgg/foto5.jpg">
 <div class="caption">
 I love you more than words can explain 💌
 </div>
@@ -511,7 +525,6 @@ Made with endless love for May Dewi Selfiany ✨🌸
 
 <script>
 
-/* OPEN WEBSITE */
 function openWebsite(){
 
 document.getElementById("opening").style.opacity="0";
@@ -520,18 +533,8 @@ setTimeout(()=>{
 document.getElementById("opening").style.display="none";
 },1000);
 
-document.getElementById("music").play();
-
 }
 
-/* AUTOPLAY IPHONE */
-const music = document.getElementById("music");
-
-document.body.addEventListener("click", () => {
-music.play();
-});
-
-/* LOVE MESSAGE */
 function loveMessage(){
 
 alert("Happy Birthday May Dewi Selfiany 💖\n\nAku akan selalu mencintaimu ✨");
