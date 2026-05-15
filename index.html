@@ -6,7 +6,7 @@
 
 <title>May Dewi Selfiany 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,171 +14,31 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
 font-family:'Poppins',sans-serif;
-background:linear-gradient(180deg,#fff0f5,#ffd6e7,#fff);
+background:linear-gradient(180deg,#fff0f6,#ffd9ea,#fff);
 overflow-x:hidden;
 color:#ff4f93;
 }
 
-/* Opening */
-
-.opening{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-position:relative;
-overflow:hidden;
-}
-
-.opening h1{
-font-family:'Great Vibes',cursive;
-font-size:70px;
-color:#ff4f93;
-text-shadow:0 0 20px rgba(255,105,180,.5);
-animation:fadeIn 2s ease;
-}
-
-.opening p{
-margin-top:10px;
-font-size:18px;
-color:#ff75ac;
-animation:fadeIn 3s ease;
-}
-
-.open-btn{
-margin-top:35px;
-padding:16px 40px;
-border:none;
-border-radius:50px;
-background:#ff4f93;
-color:white;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 10px 30px rgba(255,105,180,.4);
-transition:.3s;
-}
-
-.open-btn:hover{
-transform:scale(1.05);
-}
-
-/* Main */
-
-.main{
-display:none;
-padding:30px 20px 80px;
-animation:fadeIn 2s ease;
-}
-
-/* Slider */
-
-.slider{
-display:flex;
-overflow-x:auto;
-gap:20px;
-scroll-snap-type:x mandatory;
-padding-bottom:20px;
-}
-
-.slider::-webkit-scrollbar{
-display:none;
-}
-
-.card{
-min-width:300px;
-height:430px;
-border-radius:30px;
-overflow:hidden;
-background:white;
-scroll-snap-align:center;
-box-shadow:0 15px 40px rgba(255,105,180,.25);
-transform-style:preserve-3d;
-transition:.5s;
-position:relative;
-}
-
-.card:hover{
-transform:rotateY(5deg) rotateX(5deg) scale(1.02);
-}
-
-.card img{
-width:100%;
-height:100%;
-object-fit:cover;
-image-rendering:auto;
-filter:
-contrast(1.08)
-brightness(1.03)
-saturate(1.15)
-sharpness(1.1);
-}
-
-.overlay{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-padding:25px;
-background:linear-gradient(to top,rgba(0,0,0,.65),transparent);
-color:white;
-}
-
-.overlay h2{
-font-family:'Great Vibes',cursive;
-font-size:35px;
-}
-
-/* Love text */
-
-.message{
-margin-top:50px;
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(12px);
-padding:30px;
-border-radius:30px;
-box-shadow:0 10px 30px rgba(255,105,180,.2);
-text-align:center;
-}
-
-.message h3{
-font-size:35px;
-font-family:'Great Vibes',cursive;
-margin-bottom:15px;
-}
-
-.message p{
-font-size:17px;
-line-height:1.9;
-color:#ff5c9f;
-}
-
-/* Floating */
+/* FLOATING */
 
 .floating{
 position:fixed;
-font-size:28px;
-animation:float 8s linear infinite;
+bottom:-100px;
+font-size:30px;
 opacity:.8;
+animation:floatUp linear infinite;
 z-index:1;
+pointer-events:none;
 }
 
-.f1{left:5%;animation-duration:8s;}
-.f2{left:25%;animation-duration:10s;}
-.f3{left:45%;animation-duration:12s;}
-.f4{left:65%;animation-duration:9s;}
-.f5{left:85%;animation-duration:11s;}
-
-@keyframes float{
+@keyframes floatUp{
 0%{
-transform:translateY(100vh) rotate(0deg);
+transform:translateY(0) rotate(0deg);
 opacity:0;
 }
 10%{
@@ -189,6 +49,182 @@ transform:translateY(-120vh) rotate(360deg);
 opacity:0;
 }
 }
+
+/* OPENING */
+
+.opening{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+position:relative;
+z-index:5;
+}
+
+.opening h1{
+font-family:'Great Vibes',cursive;
+font-size:80px;
+color:#ff4f93;
+text-shadow:0 0 20px rgba(255,105,180,.5);
+animation:fadeIn 2s ease;
+}
+
+.opening p{
+margin-top:15px;
+font-size:18px;
+color:#ff75ac;
+max-width:500px;
+animation:fadeIn 3s ease;
+}
+
+.open-btn{
+margin-top:35px;
+padding:18px 45px;
+border:none;
+border-radius:60px;
+background:linear-gradient(45deg,#ff4f93,#ff84b7);
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 15px 40px rgba(255,105,180,.4);
+transition:.4s;
+}
+
+.open-btn:hover{
+transform:scale(1.08);
+}
+
+/* MAIN */
+
+.main{
+display:none;
+padding:20px;
+animation:fadeIn 1.5s ease;
+}
+
+/* TITLE */
+
+.main-title{
+text-align:center;
+margin-top:30px;
+margin-bottom:30px;
+}
+
+.main-title h2{
+font-family:'Great Vibes',cursive;
+font-size:65px;
+color:#ff4f93;
+}
+
+.main-title p{
+color:#ff75ac;
+margin-top:10px;
+}
+
+/* SLIDER */
+
+.slider{
+display:flex;
+gap:25px;
+overflow-x:auto;
+padding:20px 10px;
+scroll-snap-type:x mandatory;
+}
+
+.slider::-webkit-scrollbar{
+display:none;
+}
+
+.card{
+min-width:320px;
+height:460px;
+border-radius:35px;
+overflow:hidden;
+position:relative;
+background:white;
+scroll-snap-align:center;
+box-shadow:0 20px 50px rgba(255,105,180,.25);
+transition:.5s;
+transform-style:preserve-3d;
+}
+
+.card:hover{
+transform:rotateY(6deg) rotateX(6deg) scale(1.03);
+}
+
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+image-rendering:auto;
+filter:
+contrast(1.08)
+brightness(1.05)
+saturate(1.18);
+}
+
+.overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+padding:25px;
+background:linear-gradient(to top,rgba(0,0,0,.7),transparent);
+color:white;
+}
+
+.overlay h3{
+font-family:'Great Vibes',cursive;
+font-size:40px;
+}
+
+/* MESSAGE */
+
+.message{
+margin-top:50px;
+background:rgba(255,255,255,.65);
+backdrop-filter:blur(14px);
+padding:35px;
+border-radius:35px;
+box-shadow:0 15px 40px rgba(255,105,180,.2);
+text-align:center;
+}
+
+.message h2{
+font-family:'Great Vibes',cursive;
+font-size:55px;
+margin-bottom:20px;
+}
+
+.message p{
+line-height:2;
+font-size:17px;
+color:#ff5c9f;
+}
+
+/* MUSIC BUTTON */
+
+.music-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:65px;
+height:65px;
+border:none;
+border-radius:50%;
+background:linear-gradient(45deg,#ff4f93,#ff84b7);
+color:white;
+font-size:25px;
+cursor:pointer;
+box-shadow:0 10px 30px rgba(255,105,180,.4);
+z-index:999;
+}
+
+/* ANIMATION */
 
 @keyframes fadeIn{
 from{
@@ -201,35 +237,17 @@ transform:translateY(0);
 }
 }
 
-/* Music Button */
-
-.music-btn{
-position:fixed;
-bottom:20px;
-right:20px;
-width:60px;
-height:60px;
-border-radius:50%;
-border:none;
-background:#ff4f93;
-color:white;
-font-size:24px;
-cursor:pointer;
-box-shadow:0 10px 25px rgba(255,105,180,.4);
-z-index:999;
-}
-
 </style>
 </head>
 <body>
 
 <!-- FLOATING -->
 
-<div class="floating f1">💖</div>
-<div class="floating f2">🌸</div>
-<div class="floating f3">💕</div>
-<div class="floating f4">🌷</div>
-<div class="floating f5">✨</div>
+<div class="floating" style="left:5%;animation-duration:10s;">💖</div>
+<div class="floating" style="left:20%;animation-duration:12s;">🌸</div>
+<div class="floating" style="left:40%;animation-duration:9s;">💕</div>
+<div class="floating" style="left:60%;animation-duration:13s;">✨</div>
+<div class="floating" style="left:80%;animation-duration:11s;">🌷</div>
 
 <!-- OPENING -->
 
@@ -238,11 +256,11 @@ z-index:999;
 <h1>May Dewi Selfiany 💖</h1>
 
 <p>
-A special birthday surprise just for you ✨
+A special birthday website made with love, memories, and all my feelings just for you ✨
 </p>
 
 <button class="open-btn" onclick="openWebsite()">
-Open Surprise 💌
+Open My Heart 💌
 </button>
 
 </section>
@@ -251,40 +269,45 @@ Open Surprise 💌
 
 <section class="main" id="main">
 
+<div class="main-title">
+<h2>Our Beautiful Memories ✨</h2>
+<p>Every moment with you is my favorite story 💖</p>
+</div>
+
 <div class="slider">
 
 <div class="card">
 <img src="https://i.ibb.co/G3ktHzxv/feaabf0a-fde0-437b-9c4f-7babd402f228.jpg">
 <div class="overlay">
-<h2>Beautiful Smile ✨</h2>
+<h3>Your Smile 🌸</h3>
 </div>
 </div>
 
 <div class="card">
 <img src="https://i.ibb.co/cK73YGYJ/dc4c0e80-9854-46e0-b754-dce2a7a40203.jpg">
 <div class="overlay">
-<h2>My Favorite Person 💕</h2>
+<h3>My Favorite Girl 💕</h3>
 </div>
 </div>
 
 <div class="card">
 <img src="https://i.ibb.co/zVpX1Bm4/IMG-9249.jpg">
 <div class="overlay">
-<h2>Forever With You 💖</h2>
+<h3>Forever Together 💖</h3>
 </div>
 </div>
 
 <div class="card">
 <img src="https://i.ibb.co/1GXF52rL/IMG-8909.jpg">
 <div class="overlay">
-<h2>My Happiness 🌷</h2>
+<h3>My Happiness ✨</h3>
 </div>
 </div>
 
 <div class="card">
 <img src="https://i.ibb.co/wZ8JcFxG/IMG-8906.jpg">
 <div class="overlay">
-<h2>You Are My Home 🏡</h2>
+<h3>You Are My Home 🏡</h3>
 </div>
 </div>
 
@@ -292,26 +315,30 @@ Open Surprise 💌
 
 <div class="message">
 
-<h3>Happy Birthday My Love 💖</h3>
+<h2>Happy Birthday My Love 💖</h2>
 
 <p>
+
 Untuk May Dewi Selfiany ✨<br><br>
 
-Terima kasih sudah hadir dan menjadi bagian paling indah dalam hidupku.<br><br>
+Di hari spesialmu ini,
+aku cuma ingin kamu tahu kalau kehadiranmu adalah salah satu hal terbaik yang pernah hadir dalam hidupku 💕<br><br>
 
-Semoga di umur yang baru ini,
-semua hal baik selalu datang menghampirimu,
-senyummu selalu terjaga,
-dan bahagiamu tidak pernah berkurang 🌸<br><br>
+Terima kasih karena selalu ada,
+selalu membuat hariku lebih indah,
+dan selalu menjadi alasan kenapa aku bisa tersenyum 🌸<br><br>
 
-Aku mungkin tidak sempurna,
-tapi satu hal yang pasti,
-aku selalu ingin ada di sampingmu 💕<br><br>
+Semoga semua impianmu tercapai,
+bahagiamu selalu bertambah,
+dan semesta selalu menjaga senyum cantikmu ✨<br><br>
 
-Happy birthday sayangku,
-my prettiest girl,
-my favorite human,
-and my home 💖
+Aku tidak tahu masa depan seperti apa,
+tapi aku selalu berharap
+akan ada namamu di setiap bahagiaku 💖<br><br>
+
+Happy Birthday Sayang 🎂💕
+I Love You More Than Words Can Explain ✨
+
 </p>
 
 </div>
@@ -320,8 +347,8 @@ and my home 💖
 
 <!-- MUSIC -->
 
-<audio id="music" loop>
-<source src="https://files.catbox.moe/8xq1o7.mp3" type="audio/mp3">
+<audio id="bgMusic" loop playsinline>
+<source src="https://files.catbox.moe/8xq1o7.mp3" type="audio/mpeg">
 </audio>
 
 <button class="music-btn" onclick="toggleMusic()">
@@ -330,14 +357,26 @@ and my home 💖
 
 <script>
 
-let music = document.getElementById("music");
+const music = document.getElementById("bgMusic");
 
 function openWebsite(){
 
 document.getElementById("opening").style.display="none";
 document.getElementById("main").style.display="block";
 
-music.play();
+/* IMPORTANT FOR IPHONE */
+music.muted = false;
+
+let playPromise = music.play();
+
+if(playPromise !== undefined){
+playPromise.then(_ => {
+console.log("music playing");
+})
+.catch(error => {
+alert("Tekan tombol 🎵 untuk memulai musik");
+});
+}
 
 }
 
