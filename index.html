@@ -1,55 +1,81 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Special for May Dewi Selfiany 💖</title>
-    <meta name="description" content="Sebuah kejutan kecil khusus untukmu, sayang.">
-    
-    <meta property="og:title" content="Special for May Dewi Selfiany 🎁">
-    <meta property="og:description" content="Klik untuk melihat kejutan spesial dariku!">
-    <meta property="og:image" content="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiMKdJ/giphy.gif">
-
-    <link rel="stylesheet" href="css/index.css">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Arial', sans-serif; display: flex; justify-content: center; align-items: center; }
+        .container { text-align: center; color: white; padding: 20px; z-index: 10; }
+        #text { font-size: 1.8rem; font-weight: bold; color: #ff69b4; text-shadow: 0 0 10px rgba(255,105,180,0.5); min-height: 3rem; }
+        .btn { padding: 15px 30px; font-size: 1rem; background: #ff69b4; border: none; border-radius: 50px; color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(255,105,180,0.4); }
+        #gift-img { max-width: 80%; border-radius: 15px; display: none; margin-top: 20px; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+        .heart { position: absolute; color: #ff69b4; animation: float 3s linear infinite; }
+        @keyframes float { 0% { transform: translateY(100vh) scale(0); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
+    </style>
 </head>
-
 <body>
-    <canvas id="matrix-rain" style="display: none;"></canvas>
-    <div class="overlay">
-        <img id="gift-image" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiMKdJ/giphy.gif"
-            style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10000; max-width: 80%; border-radius: 20px;" />
-        
-        <div class="content-display" id="contentDisplay">
-            <p id="contentText"></p>
-        </div>
-        
-        <div class="book-container">
-            <div class="book" id="book"></div>
-        </div>
-
-        <button class="music-control" id="musicControl">▶</button>
-
-        <div style="display:none;">
-            <input type="text" id="matrixText" value="MAYDEWISELFANY">
-            <input type="text" id="sequenceText" value="HALO|SAYANG|MAY|DEWI|SELFIANY|AKU|CINTA|KAMU|SELAMANYA|❤">
-        </div>
-
-        <audio id="birthdayAudio" loop>
-            <source src="music/happybirtday_uia.mp3" type="audio/mpeg"> 
-        </audio>
+    <div class="container">
+        <button class="btn" id="startBtn">KLIK UNTUK KEJUTAN ❤️</button>
+        <div id="text"></div>
+        <img id="gift-img" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6bm9oZzR6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KztT2c4u8mYYUiMKdJ/giphy.gif">
     </div>
 
+    <audio id="music" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
-        window.pageConfigs = [
-            { text: "Halo, May Dewi Selfiany... Ada sesuatu yang ingin aku sampaikan lewat halaman ini." },
-            { text: "Di dunia yang luas ini, aku bersyukur karena semesta mempertemukan aku denganmu." },
-            { text: "Senyummu adalah alasan kenapa hari-hariku terasa jauh lebih berwarna." },
-            { text: "Terima kasih sudah menjadi bagian terindah dalam hidupku. Tetaplah di sampingku, ya?" },
-            { text: "Terima kasih sudah menjadi bagian terindah dalam hidupku. Aku ingin terus menulis cerita bersamamu, hari ini, esok, dan selamanya. I love you so much, May Dewi Selfiany! ❤️" }
+        const texts = [
+            "Halo, May Dewi Selfiany...",
+            "Ada sesuatu yang ingin aku sampaikan...",
+            "Terima kasih sudah hadir di hidupku ❤️",
+            "Kamu adalah bagian terindah dalam hariku.",
+            "Aku ingin terus bersamamu selamanya.",
+            "I LOVE YOU SO MUCH! 💖"
         ];
+        
+        let i = 0;
+        const btn = document.getElementById('startBtn');
+        const textDiv = document.getElementById('text');
+        const img = document.getElementById('gift-img');
+        const music = document.getElementById('music');
+
+        btn.addEventListener('click', () => {
+            btn.style.display = 'none';
+            music.play();
+            createHearts();
+            showNextText();
+        });
+
+        function showNextText() {
+            if (i < texts.length) {
+                textDiv.innerHTML = texts[i];
+                i++;
+                setTimeout(() => {
+                    if (i === texts.length) {
+                        textDiv.style.marginBottom = "20px";
+                        img.style.display = "inline-block";
+                    } else {
+                        textDiv.innerHTML = "";
+                        setTimeout(showNextText, 500);
+                    }
+                }, 2500);
+            }
+        }
+
+        function createHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 4000);
+            }, 300);
+        }
     </script>
-    <script src="js/index.js"></script>
 </body>
 </html>
